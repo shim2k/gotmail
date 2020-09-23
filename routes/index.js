@@ -3,13 +3,13 @@ var router = express.Router();
 const EmailRequestAnalyzer = require('../services/email.request.analyzer');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/gotmail', function(req, res, next) {
   res.json({status: 'up'});
 });
 
 
 
-router.get('/:campaignId/:requestName', (req, res, next) => {
+router.get('/gotmail/:campaignId/:requestName', (req, res, next) => {
   const { campaignId, requestName } = req.params;
   EmailRequestAnalyzer.addRequest(req, {campaignId, requestName});
   res.sendFile(`lol.gif`, {root: 'public'});
